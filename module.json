@@ -3,7 +3,7 @@
 	"name": "guild-contrib",
 	"author": "Foglio",
 	"description": "Really simple module that writes guild members weekly contribution to a .tsv file",
-	"disableAutoUpdate": true,
+	"disableAutoUpdate": false,
 	"options": {
 		"niceName": "guild-contrib",
 		"guiName": "guild-contrib",

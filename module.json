@@ -1,0 +1,12 @@
+{
+	"servers": ["https://raw.githubusercontent.com/Foglio1024/guild-contrib/master/"],
+	"name": "guild-contrib",
+	"author": "Foglio",
+	"description": "Really simple module that writes guild members weekly contribution to a .tsv file",
+	"disableAutoUpdate": true,
+	"options": {
+		"niceName": "guild-contrib",
+		"guiName": "guild-contrib",
+		"reloadable" : true
+	}
+}

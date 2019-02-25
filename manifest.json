@@ -1,0 +1,9 @@
+{
+	"files": {
+		"index.js": "4212bc33e8d5f91a5f6ae15030a90051949ec40db0484a1ef0fabe1e1e8ce942",
+		"module.json": "102733db23d53f83d6d67750e7a8419fb7ee856b65942021c40825a1cb6c1f58"
+	},
+	"defs": {
+		"S_GUILD_MEMBER_LIST": 1
+	}
+}

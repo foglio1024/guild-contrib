@@ -13,7 +13,7 @@ module.exports = function guild_contrib(mod){
         var fileContent = "";
         Object.keys(guild).forEach(id => {
             var member = guild[id];
-            var line = `${member.name}\t${member.contributionCurrent}\t${member.note}\r\n`;
+            var line = `${member.name}\t${member.level}\t${member.contributionCurrent}\t${member.note}\r\n`;
             fileContent += line;
 
         });

@@ -1,8 +1,11 @@
 # guild-contrib
 
+#### **Weekly guild contribution**
 Writes guild members weekly contribution to a .tsv file. 
 
 Chat command: `gc`
+
+Make sure to open guild window at least once after login before using the command.
 
 #### **Civil Unrest participants**
 

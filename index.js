@@ -25,7 +25,7 @@ module.exports = function guild_contrib(mod) {
         }
         inCU = movedToCU;
     });
-    mod.hook('S_SPAWN_USER', 14, e => {
+    mod.hook('S_SPAWN_USER', 15, e => {
         if (!inCU) return;
         if (e.guildName == myGuildName) {
             cu[e.playerId] = e;

@@ -1,5 +1,20 @@
 const fs = require('fs');
 var inCU = false;
+const classes = {
+    0 : "Warrior",
+    1 : "Lancer",
+    2 : "Slayer",
+    3 : "Berserker",
+    4 : "Sorcerer",
+    5 : "Archer",
+    6 : "Priest",
+    7 : "Mystic",
+    8 : "Reaper",
+    9 : "Gunner",
+   10 : "Brawler",
+   11 : "Ninja",
+   12 : "Valkyrie"
+}
 module.exports = function guild_contrib(mod) {
 
     var guild = {};
@@ -42,7 +57,7 @@ module.exports = function guild_contrib(mod) {
         var fileContent = "";
         Object.keys(guild).forEach(id => {
             var member = guild[id];
-            var line = `${member.playerID}\t${member.name}\t${member.level}\t${member.rank}\t${member.class}\t${member.note}\r\n`;
+            var line = `${member.playerID}\t${member.name}\t${member.level}\t${member.rank}\t${classes[member.class]}\t${member.note}\r\n`;
             fileContent += line;
 
         });

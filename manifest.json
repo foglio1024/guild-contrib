@@ -1,9 +1,10 @@
 {
 	"files": {
-		"index.js": "736b8b88ab362157fa0480fb1a32376afb956d72437fc1776c5f53cd136cd1fd",
+		"index.js": "de27a9580af9c2bc6799b170827f97467ebab28f01f81e3726d8e5a4f254292d",
 		"module.json": "d066e3dea253a3742da575a21283f54dbf43f3880e63661d3188781f9260455f"
 	},
 	"defs": {
+		"S_GUILD_INFO": [1,33528],
 		"S_GUILD_MEMBER_LIST": 1,
 		"S_LOAD_TOPO": 3,
 		"S_SPAWN_USER": 15

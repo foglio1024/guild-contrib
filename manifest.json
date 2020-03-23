@@ -1,12 +1,13 @@
 {
 	"files": {
-		"index.js": "de27a9580af9c2bc6799b170827f97467ebab28f01f81e3726d8e5a4f254292d",
+		"index.js": "ecd47aea662c43ed06392e2d0c8d9e14e377325ddc8118b146a3bbd786c592bc",
 		"module.json": "d066e3dea253a3742da575a21283f54dbf43f3880e63661d3188781f9260455f"
 	},
 	"defs": {
 		"S_GUILD_INFO": [1,33528],
 		"S_GUILD_MEMBER_LIST": 1,
 		"S_LOAD_TOPO": 3,
+		"S_PVP_RANKING_LIST": 1,
 		"S_SPAWN_USER": 15
 	}
 }

@@ -18,6 +18,7 @@ const classes = {
 };
 
 var ranks = {};
+var lastRankingList = [];
 module.exports = function guild_contrib(mod)
 {
 
@@ -30,6 +31,10 @@ module.exports = function guild_contrib(mod)
         ranksAvailable = true;
     }
 
+    mod.hook("S_PVP_RANKING_LIST", 1, ev =>
+    {
+        lastRankingList = ev.players;
+    });
     mod.hook("S_GUILD_INFO", 1, e =>
     {
         ranks = {};
@@ -79,7 +84,46 @@ module.exports = function guild_contrib(mod)
         });
     });
 
-    mod.command.add('gc', (cmd) =>
+    mod.command.add('gc', (cmd, a1) =>
+    {
+        switch (cmd)
+        {
+            case 'dump':
+                dump();
+                break;
+            case 'pvp':
+                if (a1 === "" || a1 === undefined)
+                {
+                    mod.command.message("Error: no file name specified.");
+                    return;
+                }
+                pvpRank(a1);
+                break;
+        }
+    });
+
+    var pvpRank = function(fname)
+    {
+        let fileContent = "#id\tname\tlevel\trank\tclass\tpvpRank\tpvpRating\tmessage\r\n";
+        Object.keys(guild).forEach(id =>
+        {
+            const member = guild[id];
+            const pvpRankMember = lastRankingList.find(x => x.name == member.name);
+            if (pvpRankMember === undefined) return;
+            const rank = ranksAvailable ? ranks[member.rank] : member.rank;
+            const line = `${member.playerID}\t${member.name}\t${member.level}\t${rank}\t${classes[member.class]}\t${pvpRankMember.rank}\t${pvpRankMember.rating}\t${member.note}\r\n`;
+            fileContent += line;
+        });
+
+        const filename = "mods/guild-contrib/" + fname + getTimeString() + ".tsv";
+        fs.writeFile(filename, fileContent, function (err)
+        {
+            if (err) console.log(err);
+        });
+        mod.command.message(`PvP info written to ${filename}`);
+    }
+
+    var dump = function()
     {
         let fileContent = "#id\tname\tlevel\trank\tclass\tmessage\r\n";
         Object.keys(guild).forEach(id =>
@@ -90,14 +134,18 @@ module.exports = function guild_contrib(mod)
             fileContent += line;
         });
 
-        const now = new Date();
-
-        const timeStr = `${now.getDate()}-${now.getMonth() + 1}-${now.getFullYear()} ${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`;
-        const filename = "mods/guild-contrib/gc " + timeStr + ".tsv";
+        const filename = "mods/guild-contrib/gc " + getTimeString() + ".tsv";
         fs.writeFile(filename, fileContent, function (err)
         {
             if (err) console.log(err);
         });
         mod.command.message(`Guild info written to ${filename}`);
-    });
+    }
+
+    var getTimeString = function()
+    {
+        const now = new Date();
+        const timeStr = `${now.getDate()}-${now.getMonth() + 1}-${now.getFullYear()} ${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`;
+        return timeStr;
+    }
 }

@@ -1,6 +1,8 @@
 const fs = require('fs');
+const defs = require('./defs.json');
 var inCU = false;
 var ranksAvailable = false;
+
 const classes = {
     0: "Warrior",
     1: "Lancer",
@@ -25,10 +27,16 @@ module.exports = function guild_contrib(mod)
     var guild = {};
     var cu = {};
     var myGuildName = "";
-    if (mod.dispatch.protocolVersion === 363037)
+
+    if (defs["S_GUILD_INFO"][mod.dispatch.protocolVersion] !== undefined)
     {
-        mod.dispatch.addOpcode("S_GUILD_INFO", 33528);
+        mod.dispatch.addOpcode("S_GUILD_INFO", defs["S_GUILD_INFO"][mod.dispatch.protocolVersion]);
         ranksAvailable = true;
+    }
+
+    if (defs["S_PVP_RANKING_LIST"][mod.dispatch.protocolVersion] !== undefined)
+    {
+        mod.dispatch.addOpcode("S_PVP_RANKING_LIST", defs["S_PVP_RANKING_LIST"][mod.dispatch.protocolVersion]);
     }
 
     mod.hook("S_PVP_RANKING_LIST", 1, ev =>
@@ -102,7 +110,7 @@ module.exports = function guild_contrib(mod)
         }
     });
 
-    var pvpRank = function(fname)
+    var pvpRank = function (fname)
     {
         let fileContent = "#id\tname\tlevel\trank\tclass\tpvpRank\tpvpRating\tmessage\r\n";
         Object.keys(guild).forEach(id =>
@@ -123,7 +131,7 @@ module.exports = function guild_contrib(mod)
         mod.command.message(`PvP info written to ${filename}`);
     }
 
-    var dump = function()
+    var dump = function ()
     {
         let fileContent = "#id\tname\tlevel\trank\tclass\tmessage\r\n";
         Object.keys(guild).forEach(id =>
@@ -142,7 +150,7 @@ module.exports = function guild_contrib(mod)
         mod.command.message(`Guild info written to ${filename}`);
     }
 
-    var getTimeString = function()
+    var getTimeString = function ()
     {
         const now = new Date();
         const timeStr = `${now.getDate()}-${now.getMonth() + 1}-${now.getFullYear()} ${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}`;

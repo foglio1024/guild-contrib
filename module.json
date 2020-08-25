@@ -5,7 +5,7 @@
 	"description": "Really simple module that writes guild members weekly contribution to a .tsv file",
 	"disableAutoUpdate": false,
 	"options": {
-		"niceName": "guild-contrib",
+		"cliName": "guild-contrib",
 		"guiName": "guild-contrib",
 		"reloadable" : true
 	}

@@ -28,16 +28,16 @@ module.exports = function guild_contrib(mod)
     var cu = {};
     var myGuildName = "";
 
-    if (defs["S_GUILD_INFO"][mod.dispatch.protocolVersion] !== undefined)
-    {
-        mod.dispatch.addOpcode("S_GUILD_INFO", defs["S_GUILD_INFO"][mod.dispatch.protocolVersion]);
-        ranksAvailable = true;
-    }
+    // if (defs["S_GUILD_INFO"][mod.dispatch.protocolVersion] !== undefined)
+    // {
+    //     mod.dispatch.addOpcode("S_GUILD_INFO", defs["S_GUILD_INFO"][mod.dispatch.protocolVersion]);
+    //     ranksAvailable = true;
+    // }
 
-    if (defs["S_PVP_RANKING_LIST"][mod.dispatch.protocolVersion] !== undefined)
-    {
-        mod.dispatch.addOpcode("S_PVP_RANKING_LIST", defs["S_PVP_RANKING_LIST"][mod.dispatch.protocolVersion]);
-    }
+    // if (defs["S_PVP_RANKING_LIST"][mod.dispatch.protocolVersion] !== undefined)
+    // {
+    //     mod.dispatch.addOpcode("S_PVP_RANKING_LIST", defs["S_PVP_RANKING_LIST"][mod.dispatch.protocolVersion]);
+    // }
 
     mod.hook("S_PVP_RANKING_LIST", 1, ev =>
     {

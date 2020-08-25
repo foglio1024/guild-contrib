@@ -1,8 +1,8 @@
 {
 	"files": {
 		"defs.json": "8537b9869f5bf4ee4875eaeeb053aafdf2e781998cb46030614a78740d29da71",
-		"index.js": "ca04674a22cf5606006dcad334c573aa1651ba9c422ca12ddda909fc7459ccf1",
-		"module.json": "d066e3dea253a3742da575a21283f54dbf43f3880e63661d3188781f9260455f"
+		"index.js": "12f0ab99e106f48b02a44b1870994374842c8e67e848fa7a2b270776e9052eca",
+		"module.json": "94f0ee1b1e10536f09cb88e578a2bdbaa90041d5af8a820617b046f6794c7583"
 	},
 	"defs": {
 		"S_GUILD_INFO": [1,33528],
